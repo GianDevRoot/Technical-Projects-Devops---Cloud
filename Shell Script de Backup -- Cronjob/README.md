@@ -24,8 +24,8 @@ Este proyecto consiste en un script Bash que realiza **copias de seguridad autom
 
 ## 📂 Estructura del repositorio
 
-backup-script/<br>
-│<br>
+backup-script/ <br>
+│ <br>
 ├── backup.sh → Script principal de backup <br>
 ├── crontab.txt → Ejemplo de entrada cron programada <br>
 └── README.md
