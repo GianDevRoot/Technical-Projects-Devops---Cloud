@@ -8,3 +8,4 @@ def test_homepage():
     response = tester.get('/')
     assert response.status_code == 200
     assert b"Hola Mundo" in response.data
+
