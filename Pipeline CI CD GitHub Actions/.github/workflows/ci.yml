@@ -1,0 +1,38 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test-docker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Obtener el código del repositorio
+      - uses: actions/checkout@v4
+
+      # Paso 2: Configurar Python para posibles pruebas
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Paso 4: Ejecutar pruebas unitarias (si tienes tests)
+      - name: Run unit tests
+        run: |
+          pytest -v
+      
+      # Paso 5: Construir imagen Docker
+      - name: Build Docker image
+        run: |
+          docker build -t flask-hello:latest .
+
